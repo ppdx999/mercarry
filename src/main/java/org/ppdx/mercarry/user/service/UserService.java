@@ -24,6 +24,14 @@ public class UserService {
 
     public User registerNewUser(String username, String password) {
         User user = new User();
+
+        // Check if the username already exists.
+        // This check is not working properly in multi-threaded environment because
+        // the check is not atomic. To ensure the uniqueness of the username, the
+        // username column has unique constraint in the database.
+        if (userRepository.findByUsername(username).isPresent()) {
+            throw new RuntimeException("Username already exists");
+        }
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
         user.setEnabled(true);
