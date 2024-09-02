@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .formLogin(login -> login.permitAll().defaultSuccessUrl("/", true)
                         .loginPage("/signin"))
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/", "/signin", "/register", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/", "/signin", "/signup", "/css/**", "/js/**", "/images/**").permitAll()
                         .anyRequest().authenticated());
 
         return http.build();

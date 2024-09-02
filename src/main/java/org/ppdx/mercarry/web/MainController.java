@@ -19,18 +19,18 @@ public class MainController {
     }
 
     @GetMapping("/signin")
-    public String login() {
-        return "login";
+    public String signin() {
+        return "signin";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
+    @GetMapping("/signup")
+    public String signup() {
+        return "signup";
     }
 
-    @PostMapping("/register")
-    public String registerUser(@RequestParam String username, @RequestParam String password) {
+    @PostMapping("/signup")
+    public String signupUser(@RequestParam String username, @RequestParam String password) {
         userService.registerNewUser(username, password);
-        return "redirect:/login";
+        return "redirect:/signin";
     }
 }

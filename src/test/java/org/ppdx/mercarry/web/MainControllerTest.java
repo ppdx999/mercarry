@@ -38,9 +38,9 @@ public class MainControllerTest {
     }
 
     @Test
-    void testLoginPage() throws Exception {
+    void testSigninPage() throws Exception {
         mockMvc.perform(get("/signin"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("login"));
+                .andExpect(view().name("signin"));
     }
 }
