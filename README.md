@@ -7,8 +7,8 @@
 1. setup postgresql
 
 ```
-CREATE DATABASE mercarry_db;
 CREATE USER mercarry_user WITH ENCRYPTED PASSWORD 'password';
+CREATE DATABASE mercarry_db OWNER mercarry_user;
 GRANT ALL PRIVILEGES ON DATABASE mercarry_db TO mercarry_user;
 ```
 
