@@ -21,7 +21,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
-import java.util.Set;
 
 public class UserServiceTest {
 
@@ -49,7 +48,7 @@ public class UserServiceTest {
         when(roleRepository.findByName("USER")).thenReturn(Optional.of(new Role(1L, "USER")));
 
         // ユーザー登録のテスト
-        User _user = userService.registerNewUser("testuser", "testpassword");
+        userService.registerNewUser("testuser", "testpassword");
 
         // 保存されたユーザーをキャプチャ
         ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
