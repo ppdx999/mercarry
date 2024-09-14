@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+actor User
+
+actor Admin
+
+package ShoppingApp {
+	usecase "Manage Account" as ManageAccount
+	usecase "Manage Payment Information" as ManagePaymentInfo
+	usecase "Manage Shipping Information" as ManageShippingInfo
+	usecase "Browse products" as Browse
+	usecase "Supply a product" as Supply
+	usecase "Order a product" as Order
+	usecase "Ship a product" as Ship
+	usecase "Receive a product" as Receive
+	usecase "Charge Point" as ChargePoint
+	usecase "Manage troubles" as ManageTroubles
+}
+
+
+User --> ManageAccount
+User --> ManagePaymentInfo
+User --> ManageShippingInfo
+User --> Browse
+User --> Supply
+User --> Order
+User --> Ship
+User --> Receive
+User --> ChargePoint
+User --> ManageTroubles
+Admin --> ManageTroubles
+
+@enduml

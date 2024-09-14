@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="799px" preserveAspectRatio="none" style="width:375px;height:799px;" version="1.1" viewBox="0 0 375 799" width="375px" zoomAndPan="magnify"><defs><filter height="300%" id="f1ld31el9zeoop" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[9057ca84905439b242a17b5742234f6a]
+cluster ShoppingApp--><polygon fill="#FFFFFF" filter="url(#f1ld31el9zeoop)" points="94,24,193,24,200,50.2719,353,50.2719,353,781,94,781,94,24" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="94" x2="200" y1="50.2719" y2="50.2719"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="93" x="98" y="42.2399">ShoppingApp</text><ellipse cx="223.4224" cy="80.8845" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="77.4224" ry="17.8845" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="109" x="168.9224" y="87.5204">Manage Account</text><ellipse cx="223.3849" cy="158.977" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="112.8849" ry="24.977" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="195" x="125.8849" y="165.6129">Manage Payment Information</text><ellipse cx="223.3288" cy="244.0658" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="113.3288" ry="25.0658" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="196" x="125.3288" y="250.7017">Manage Shipping Information</text><ellipse cx="223.2893" cy="321.9579" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="77.7893" ry="17.9579" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="110" x="168.2893" y="328.5938">Browse products</text><ellipse cx="223.5277" cy="393.1055" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="78.5277" ry="18.1055" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="167.5277" y="399.7415">Supply a product</text><ellipse cx="223.2543" cy="463.9509" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="75.2543" ry="17.4509" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="103" x="171.7543" y="470.5868">Order a product</text><ellipse cx="223.3823" cy="533.8344" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="70.8823" ry="17.3344" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="96" x="175.3823" y="540.4704">Ship a product</text><ellipse cx="223.3995" cy="604.9799" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="80.3995" ry="18.4799" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="117" x="164.8995" y="611.6159">Receive a product</text><ellipse cx="223.6041" cy="675.8344" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="63.1041" ry="17.3344" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="181.1041" y="682.4704">Charge Point</text><ellipse cx="223.2893" cy="746.9579" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="77.7893" ry="17.9579" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="110" x="168.2893" y="753.5938">Manage troubles</text><!--MD5=[fee662a292a0353a69bd162820bae93b]
+entity User--><ellipse cx="28" cy="396" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M28,404 L28,431 M15,412 L41,412 M28,431 L15,446 M28,431 L41,446 " fill="none" filter="url(#f1ld31el9zeoop)" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="30" x="13" y="467.7399">User</text><!--MD5=[97ab183161fd5d1db7fba7485cf76add]
+entity Admin--><ellipse cx="28" cy="714" fill="#FEFECE" filter="url(#f1ld31el9zeoop)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M28,722 L28,749 M15,730 L41,730 M28,749 L15,764 M28,749 L41,764 " fill="none" filter="url(#f1ld31el9zeoop)" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="6" y="785.7399">Admin</text><!--MD5=[d2ddb3d6565f80c52ceac7c25f98a1b8]
+link User to ManageAccount--><path d="M31.19,386.48 C35.98,310.24 50,154.65 86,116 C100.74,100.17 121.58,91.1 142.55,86.01 " fill="none" id="User-&gt;ManageAccount" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="147.59,84.86,137.9247,82.9675,142.7159,85.9749,139.7085,90.7661,147.59,84.86" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[a8d58343c2d26055ed2efd99782fb003]
+link User to ManagePaymentInfo--><path d="M34.62,386.23 C43.12,327.85 60.95,227.43 86,201 C96.8,189.6 110.62,181.27 125.29,175.19 " fill="none" id="User-&gt;ManagePaymentInfo" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="130.3,173.22,120.4596,172.8121,125.6508,175.0597,123.4032,180.2509,130.3,173.22" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[a830b29461c7dd0ddaf4e3430c35479f]
+link User to ManageShippingInfo--><path d="M35.79,386.48 C43.01,354.66 57.51,312.27 86,286 C97.89,275.03 112.59,266.93 127.89,260.94 " fill="none" id="User-&gt;ManageShippingInfo" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="132.66,259.14,122.828,258.5647,127.9801,260.9003,125.6445,266.0525,132.66,259.14" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[aedf9104fbc016ace4e3c40f8d59a4cd]
+link User to Browse--><path d="M43.07,403.81 C53.09,388.11 67.95,368.72 86,357 C104.88,344.73 127.83,336.76 149.48,331.59 " fill="none" id="User-&gt;Browse" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="154.37,330.46,144.6994,328.5945,149.499,331.5885,146.505,336.388,154.37,330.46" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[aae5849967404ebbf086f2821e58db57]
+link User to Supply--><path d="M43.23,426.35 C66.96,421.94 116.06,412.8 156.88,405.21 " fill="none" id="User-&gt;Supply" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="161.82,404.29,152.2414,401.9987,156.9039,405.202,153.7006,409.8645,161.82,404.29" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[5b2a2bdb39cc116e4a78ea074bb38160]
+link User to Order--><path d="M43.23,431.57 C67.3,435.93 117.45,445 158.61,452.44 " fill="none" id="User-&gt;Order" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="163.58,453.34,155.4322,447.8071,158.6593,452.4531,154.0132,455.6802,163.58,453.34" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[34c0e7dd7ec11e9efe326682cd437e5d]
+link User to Ship--><path d="M43.22,453.49 C53.3,468.75 68.18,487.6 86,499 C106.31,511.99 131.21,520.17 154.16,525.31 " fill="none" id="User-&gt;Ship" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="159.33,526.43,151.3795,520.6171,154.4431,525.3726,149.6876,528.4362,159.33,526.43" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[d7b15c90ea3d4fdc2addc760979a862f]
+link User to Receive--><path d="M35.88,471.62 C43.13,502.87 57.61,544.05 86,569 C102.02,583.08 122.92,591.75 143.54,597.05 " fill="none" id="User-&gt;Receive" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="148.49,598.27,140.7121,592.2281,143.6359,597.0708,138.7933,599.9946,148.49,598.27" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[48d21eff68b556ce24a497227fa65d8f]
+link User to ChargePoint--><path d="M28.46,471.83 C30.27,519.67 40.73,596.26 86,641 C104.43,659.22 130.98,668.35 155.78,672.8 " fill="none" id="User-&gt;ChargePoint" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="160.71,673.63,152.4977,668.1933,155.7792,672.8011,151.1714,676.0825,160.71,673.63" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[42dfca35d25167d0bba87ffa92beb4aa]
+link User to ManageTroubles--><path d="M32.18,471.73 C38.27,541.85 53.91,676.98 86,711 C100.87,726.76 121.75,735.93 142.71,741.18 " fill="none" id="User-&gt;ManageTroubles" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="147.75,742.37,139.9181,736.3983,142.8854,741.2145,138.0692,744.1818,147.75,742.37" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[28f7de283ce07ca3b749b622c16c4b3f]
+link Admin to ManageTroubles--><path d="M50.08,747 C71.83,747 107.16,747 140.19,747 " fill="none" id="Admin-&gt;ManageTroubles" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="145.47,747,136.47,743,140.47,747,136.47,751,145.47,747" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b2abe9e5e6f78c33095da98ef9414809]
+@startuml
+left to right direction
+
+actor User
+
+actor Admin
+
+package ShoppingApp {
+	usecase "Manage Account" as ManageAccount
+	usecase "Manage Payment Information" as ManagePaymentInfo
+	usecase "Manage Shipping Information" as ManageShippingInfo
+	usecase "Browse products" as Browse
+	usecase "Supply a product" as Supply
+	usecase "Order a product" as Order
+	usecase "Ship a product" as Ship
+	usecase "Receive a product" as Receive
+	usecase "Charge Point" as ChargePoint
+	usecase "Manage troubles" as ManageTroubles
+}
+
+
+User - -> ManageAccount
+User - -> ManagePaymentInfo
+User - -> ManageShippingInfo
+User - -> Browse
+User - -> Supply
+User - -> Order
+User - -> Ship
+User - -> Receive
+User - -> ChargePoint
+User - -> ManageTroubles
+Admin - -> ManageTroubles
+
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 19:22:07 JST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 21.0.4+7-Ubuntu-1ubuntu224.04
+Operating System: Linux
+Default Encoding: UTF-8
+Language: ja
+Country: JP
+--></g></svg>

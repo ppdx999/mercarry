@@ -1,7 +1,9 @@
 @startuml erd
 !include tables.pu
 
+users ||-u-o{ address
 users ||-l-o{ roles
+users ||-r-|| wallets
 users ||-d-o{ supplies
 users ||-d-o{ payments
 users ||-d-o{ orders

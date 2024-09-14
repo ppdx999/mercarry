@@ -5,52 +5,71 @@ entity users as "users\nユーザー" {
 	username [ユーザー名]
 }
 
+entity address as "addresses\n住所" {
+	+ id [PK]
+	--
+	user_id [ユーザーID]
+	zip_code [郵便番号]
+	prefecture [都道府県]
+	city [市区町村]
+	street [番地]
+}
+
 entity roles as "roles\nロール" {
 	+ id [PK]
 	--
 	role_name [ロール名]
 }
 
+entity wallets as "wallets\nウォレット" {
+	+ id [PK]
+	--
+	user_id [ユーザーID]
+	balance [残高]
+}
+
 entity supplies as "supplies\n納品" {
 	+ id [PK]
 	--
-	supply_name [納品名]
 	supplier_id [納品者ID]
-	supplier_name [納品者名]
-	status [ステータス]
+	product_id [商品ID]
+	created_at [作成日時]
 }
 
 entity products as "products\n商品" {
 	+ id [PK]
 	--
-	product_name [商品名]
-	status [ステータス]
+	name [商品名]
+	price [価格]
+	supply_id [納品ID]
+	order_id [注文ID]
 }
 
 entity orders as "orders\n注文" {
 	+ id [PK]
 	--
-	order_name [注文名]
+	product_id [商品ID]
 	orderer_id [注文者ID]
-	orderer_name [注文者名]
-	status [ステータス]
+	created_at [作成日時]
+	payment_id [支払いID]
+	delivery_id [配送ID]
 }
 
 entity payments as "payments\n支払い" {
 	+ id [PK]
 	--
-	payment_name [支払い名]
+	order_id [注文ID]
 	payer_id [支払い者ID]
-	payer_name [支払い者名]
-	status [ステータス]
+	receiver_id [受取者ID]
+	amount [金額]
 }
 
 entity deliveries as "deliveries\n配送" {
 	+ id [PK]
 	--
-	delivery_name [配送名]
-	deliverer_id [配送者ID]
-	deliverer_name [配送者名]
+	order_id [注文ID]
+	from_address_id [出発地ID]
+	to_address_id [到着地ID]
 	status [ステータス]
 }
 
