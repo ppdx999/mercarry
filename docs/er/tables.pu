@@ -1,0 +1,57 @@
+@startuml tables
+entity users as "users\nユーザー" {
+	+ id [PK]
+	--
+	username [ユーザー名]
+}
+
+entity roles as "roles\nロール" {
+	+ id [PK]
+	--
+	role_name [ロール名]
+}
+
+entity supplies as "supplies\n納品" {
+	+ id [PK]
+	--
+	supply_name [納品名]
+	supplier_id [納品者ID]
+	supplier_name [納品者名]
+	status [ステータス]
+}
+
+entity products as "products\n商品" {
+	+ id [PK]
+	--
+	product_name [商品名]
+	status [ステータス]
+}
+
+entity orders as "orders\n注文" {
+	+ id [PK]
+	--
+	order_name [注文名]
+	orderer_id [注文者ID]
+	orderer_name [注文者名]
+	status [ステータス]
+}
+
+entity payments as "payments\n支払い" {
+	+ id [PK]
+	--
+	payment_name [支払い名]
+	payer_id [支払い者ID]
+	payer_name [支払い者名]
+	status [ステータス]
+}
+
+entity deliveries as "deliveries\n配送" {
+	+ id [PK]
+	--
+	delivery_name [配送名]
+	deliverer_id [配送者ID]
+	deliverer_name [配送者名]
+	status [ステータス]
+}
+
+@enduml
