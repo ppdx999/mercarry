@@ -20,8 +20,12 @@
 			</nav>
 		</header>
     <div>
-        <p>list</p>
-        <!-- 出品情報をここにリスト表示する予定 -->
+			<ul>
+				<li th:each="product : ${products}">
+						<p th:text="${product.name}">Product Name</p>
+						<p th:text="${product.price}">Price</p>
+				</li>
+			</ul>
     </div>
 </body>
 </html>

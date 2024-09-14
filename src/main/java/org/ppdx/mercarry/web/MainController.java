@@ -1,11 +1,16 @@
 package org.ppdx.mercarry.web;
 
+import org.ppdx.mercarry.product.domain.Product;
+import org.ppdx.mercarry.product.service.ProductService;
 import org.ppdx.mercarry.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -13,8 +18,13 @@ public class MainController {
     @Autowired
     private UserService userService;
 
+		@Autowired
+		private ProductService productService;
+
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+				List<Product> products = productService.getAllProducts();
+				model.addAttribute("products", products);
         return "index";
     }
 
