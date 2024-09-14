@@ -14,7 +14,7 @@
 				</div>
 
 				<div th:if="${#authentication.name != 'anonymousUser'}">
-						<p>Welcome, <span th:text="${#authentication.name}"></span>!</p>
+						<p>Welcome, <span id="username" th:text="${#authentication.name}"></span>!</p>
 						<a th:href="@{/signout}">Sign Out</a>
 				</div>
 			</nav>

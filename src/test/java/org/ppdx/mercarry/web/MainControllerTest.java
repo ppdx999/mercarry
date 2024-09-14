@@ -10,10 +10,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.security.test.context.support.WithMockUser;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -42,5 +45,27 @@ public class MainControllerTest {
         mockMvc.perform(get("/signin"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("signin"));
+    }
+
+    @Test
+    void whenNotLoggedIn_thenSignInAndSignUpDisplayed() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(xpath("//a[@href='/signin']").exists())
+                .andExpect(xpath("//a[@href='/signup']").exists())
+                .andExpect(xpath("//span[@id='username']").doesNotExist());
+    }
+
+    @Test
+    @WithMockUser(username = "testuser")
+    void whenLoggedIn_thenUsernameDisplayed() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(xpath("//a[@href='/signin']").doesNotExist())
+                .andExpect(xpath("//a[@href='/signup']").doesNotExist())
+                .andExpect(xpath("//span[@id='username']").exists())
+                .andExpect(xpath("//span[@id='username']").string("testuser"));
     }
 }
