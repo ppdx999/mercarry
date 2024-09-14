@@ -5,11 +5,20 @@
     <title>Top Page</title>
 </head>
 <body>
-    <h1>Welcome to Mercarry!</h1>
-    <div>
-        <a th:href="@{/signin}">signin</a> | 
-        <a th:href="@{/signup}">signup</a>
-    </div>
+    <h1>Welcome to Mercarry! v2</h1>
+		<header>
+			<nav>
+				<div th:if="${#authentication.name == 'anonymousUser'}">
+						<a th:href="@{/signin}">Sign In</a>
+						<a th:href="@{/signup}">Sign Up</a>
+				</div>
+
+				<div th:if="${#authentication.name != 'anonymousUser'}">
+						<p>Welcome, <span th:text="${#authentication.name}"></span>!</p>
+						<a th:href="@{/signout}">Sign Out</a>
+				</div>
+			</nav>
+		</header>
     <div>
         <p>list</p>
         <!-- 出品情報をここにリスト表示する予定 -->
