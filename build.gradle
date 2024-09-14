@@ -53,7 +53,8 @@ dependencyManagement {
 }
 
 test {
-    testLogging.showStandardStreams = true
+    // Set this true to see what is printed to the console when running tests
+    testLogging.showStandardStreams = false
 }
 
 tasks.named('test') {
