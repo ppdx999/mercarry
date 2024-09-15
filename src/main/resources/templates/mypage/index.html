@@ -3,8 +3,11 @@
 	<head th:insert="~{layout :: head}"></head>
 <body>
 	<header th:insert="~{layout :: header}"></header>
-	<main>
-		<h1 class="testcss">Welcome to Mercarry! v2!!!</h1>
-	</main>
-	<footer th:insert="~{layout :: footer}"></footer>
+	<div class="d-flex">
+		<div th:insert="~{layout :: sidebar}"></div>
+		<main class="content d-flex flex-column align-items-center">
+			<div th:insert="~{icons :: account-icon}"></div>
+			<p class="text-center mt-3">Hi <Span th:text="${#authentication.name}">username</span>, Welcome to Mercarry!</p>
+		</main>
+	</div>
 </body>

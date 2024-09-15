@@ -37,6 +37,22 @@
 			</div>
 		</nav>
 	</header>
+	<div class="d-flex">
+		<!-- sidebar -->
+		<div th:fragment="sidebar" th:remove="tag">
+			<nav class="sidebar">
+				<ul>
+					<li><a th:href="@{/mypage}">プロフィール</a></li>
+					<li><a th:href="@{/mypage}">出品する</a></li>
+					<li><a th:href="@{/mypage}">出品した商品</a></li>
+					<li><a th:href="@{/mypage}">購入した商品</a></li>
+				</ul>
+			</nav>
+		</div>
+		<main class="content">
+			<h1>main content</h1>
+		</main>
+	</div>
 	<footer th:fragment="footer" th:remove="tag">
 		<p>c 2024 Mercarry</p>
 	</footer>
