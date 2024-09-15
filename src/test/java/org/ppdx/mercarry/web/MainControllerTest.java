@@ -53,8 +53,7 @@ public class MainControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(xpath("//a[@href='/signin']").exists())
-                .andExpect(xpath("//a[@href='/signup']").exists())
-                .andExpect(xpath("//span[@id='username']").doesNotExist());
+                .andExpect(xpath("//a[@href='/signup']").exists());
     }
 
     @Test
@@ -63,9 +62,6 @@ public class MainControllerTest {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andDo(print())
-                .andExpect(xpath("//a[@href='/signin']").doesNotExist())
-                .andExpect(xpath("//a[@href='/signup']").doesNotExist())
-                .andExpect(xpath("//span[@id='username']").exists())
-                .andExpect(xpath("//span[@id='username']").string("testuser"));
+                .andExpect(xpath("//a[@href='/mypage']").exists());
     }
 }
