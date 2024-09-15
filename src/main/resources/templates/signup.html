@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>ユーザー登録</title>
-</head>
+<head th:insert="~{layout :: head}"></head>
 <body>
+	<header th:insert="~{layout :: header}"></header>
+	<main>
     <h1>ユーザー登録</h1>
     <form th:action="@{/signup}" method="post">
         <div>
@@ -19,8 +18,8 @@
             <button type="submit">登録</button>
         </div>
     </form>
-    <div>
-        <a th:href="@{/signin}">ログイン</a>
-    </div>
+	</main>
+	<footer th:insert="~{layout :: footer}"></footer>
+	<div th:insert="~{layout :: dependencies}"></div>
 </body>
 </html>
