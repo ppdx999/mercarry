@@ -1,31 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	  <meta charset="UTF-8"></meta>
-    <title>Top Page</title>
-</head>
+<head th:insert="~{layout :: head}"></head>
 <body>
-    <h1>Welcome to Mercarry! v2</h1>
-		<header>
-			<nav>
-				<div th:if="${#authentication.name == 'anonymousUser'}">
-						<a th:href="@{/signin}">Sign In</a>
-						<a th:href="@{/signup}">Sign Up</a>
-				</div>
-
-				<div th:if="${#authentication.name != 'anonymousUser'}">
-						<p>Welcome, <span id="username" th:text="${#authentication.name}"></span>!</p>
-						<a th:href="@{/signout}">Sign Out</a>
-				</div>
-			</nav>
-		</header>
-    <div>
+	<header th:insert="~{layout :: header}"></header>
+	<main>
+		<h1>Welcome to Mercarry! v2</h1>
+		<div>
 			<ul>
 				<li th:each="product : ${products}">
 						<p th:text="${product.name}">Product Name</p>
 						<p th:text="${product.price}">Price</p>
 				</li>
 			</ul>
-    </div>
+		</div>
+	</main>
+	<footer th:insert="~{layout :: footer}"></footer>
 </body>
 </html>

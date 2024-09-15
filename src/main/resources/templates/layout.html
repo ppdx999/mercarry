@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head" th:remove="tag">
+	  <meta charset="UTF-8"></meta>
+    <title>Mercarry</title>
+</head>
+<body>
+	<header th:fragment="header" th:remove="tag">
+			<nav>
+				<div th:if="${#authentication.name == 'anonymousUser'}">
+						<a th:href="@{/signin}">Sign In</a>
+						<a th:href="@{/signup}">Sign Up</a>
+				</div>
+
+				<div th:if="${#authentication.name != 'anonymousUser'}">
+						<p>Welcome, <span id="username" th:text="${#authentication.name}"></span>!</p>
+						<a th:href="@{/signout}">Sign Out</a>
+				</div>
+			</nav>
+		</header>
+		<footer th:fragment="footer" th:remove="tag">
+			<p>&copy; 2024 Mercarry</p>
+		</footer>
+</body>
+</html>
