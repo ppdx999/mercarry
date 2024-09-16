@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:insert="~{layout :: head}"></head>
+<body>
+	<header th:insert="~{layout :: header}"></header>
+	<div class="d-flex">
+		<div th:insert="~{layout :: sidebar}"></div>
+		<main class="content container">
+			<h1>New Product</h1>
+			<form th:action="@{/mypage/products}" th:object="${product}" method="post">
+				<div class="mb-3">
+					<label for="name" class="form-label">Product Name</label>
+					<input type="text" class="form-control" id="name" name="name" th:field="*{name}">
+					<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback"></div>
+				</div>
+				<div class="mb-3">
+					<label for="price" class="form-label">Price</label>
+					<input type="number" class="form-control" id="price" name="price" th:field="*{price}">
+					<div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="invalid-feedback"></div>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</main>
+	</div>
+</body>

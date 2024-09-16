@@ -20,4 +20,8 @@ public class ProductService {
 	public List<Product> getProductsBySupplier(User supplier) {
 		return productRepository.findBySupplier(supplier);
 	}
+
+	public void saveProduct(Product product) {
+		productRepository.save(product);
+	}
 }
