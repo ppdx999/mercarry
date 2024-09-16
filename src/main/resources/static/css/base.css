@@ -15,7 +15,7 @@
 }
 
 .sidebar ul li {
-	margin: 0.5rem 0;
+	margin: 1rem 0;
 }
 
 .sidebar ul li a {
@@ -25,5 +25,5 @@
 
 .content {
 	margin: 2rem;
-	flex: 1;
+	flex-grow; 1;
 }
