@@ -15,13 +15,13 @@ public class MypageController extends BaseController {
 	private ProductService productService;
 
 	@GetMapping("/mypage")
-	public String mypage(Model model) {
+	public String index(Model model) {
 		return "mypage/index";
 	}
 
 	@GetMapping("/mypage/products")
-	public String mypageProducts(Model model, @AuthenticationPrincipal User user) {
+	public String listProducts(Model model, @AuthenticationPrincipal User user) {
 		model.addAttribute("products", productService.getProductsBySupplier(user));
-		return "mypage/products";
+		return "mypage/products/index";
 	}
 }
