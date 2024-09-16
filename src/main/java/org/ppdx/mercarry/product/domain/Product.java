@@ -3,6 +3,7 @@ package org.ppdx.mercarry.product.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Range;
 
 import java.math.BigDecimal;
 
@@ -18,6 +19,8 @@ public class Product {
 	private Long id;
 
 	private String name;
+	
+	@Range(min = 100, max = 50000)
 	private BigDecimal price;
 
 	@ManyToOne

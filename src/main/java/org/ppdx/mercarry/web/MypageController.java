@@ -3,6 +3,7 @@ package org.ppdx.mercarry.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +37,10 @@ public class MypageController extends BaseController {
 	}
 
 	@PostMapping("/mypage/products")
-	public String createProduct(@ModelAttribute Product product, BindingResult valid, @AuthenticationPrincipal User user) {
+	public String createProduct(@Validated @ModelAttribute Product product, BindingResult valid, @AuthenticationPrincipal User user) {
+		if (valid.hasErrors()) {
+			return "mypage/products/new";
+		}
 		product.setSupplier(user);
 		productService.saveProduct(product);
 		return "redirect:/mypage/products";
