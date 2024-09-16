@@ -25,5 +25,5 @@
 
 .content {
 	margin: 2rem;
-	flex-grow; 1;
+	flex: 1;
 }
