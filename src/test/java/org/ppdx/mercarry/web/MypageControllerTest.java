@@ -1,6 +1,8 @@
 package org.ppdx.mercarry.web;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.ppdx.mercarry.product.service.ProductService;
 import org.ppdx.mercarry.user.service.CustomUserDetailsService;
 import org.ppdx.mercarry.user.service.UserService;
@@ -67,12 +69,13 @@ public class MypageControllerTest {
         .andExpect(redirectedUrl("/mypage/products"));
     }
 
-		@Test
 		@WithMockUser
-		public void testCreateProductWithInvalidParams() throws Exception {
+		@ParameterizedTest
+		@ValueSource(ints = {-1, 99, 50001})
+		public void testCreateProductFailWithOutOf100To50000Price(int price) throws Exception {
 				mockMvc.perform(post("/mypage/products")
 								.param("name", "Sample Product")
-								.param("price", "-1")
+								.param("price", String.valueOf(price))
 								.with(csrf())
 				)
 				.andExpect(status().isOk())
@@ -80,4 +83,16 @@ public class MypageControllerTest {
 				.andExpect(model().attributeHasFieldErrors("product", "price"));
 		}
 
+		@Test
+		@WithMockUser
+		public void testCreateProductFailWithEmptyName() throws Exception {
+				mockMvc.perform(post("/mypage/products")
+								.param("name", "")
+								.param("price", "3000")
+								.with(csrf())
+				)
+				.andExpect(status().isOk())
+				.andExpect(view().name("mypage/products/new"))
+				.andExpect(model().attributeHasFieldErrors("product", "name"));
+		}
 }
