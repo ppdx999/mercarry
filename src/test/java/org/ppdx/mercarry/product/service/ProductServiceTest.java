@@ -47,4 +47,21 @@ public class ProductServiceTest {
 		assertThat(products.size()).isEqualTo(1);
 		assertThat(products).containsExactly(product1);
 	}
+
+	@Test
+	void testCreateProduct() {
+		// Arrange
+		User supplier = new User();
+		supplier.setId(1L);
+
+		Product product = new Product();
+		product.setId(1L);
+
+		// Act
+		productService.createProduct(product, supplier);
+
+		// Assert
+		verify(productRepository).save(product);
+		assertThat(product.getSupplier()).isEqualTo(supplier);
+	}
 }

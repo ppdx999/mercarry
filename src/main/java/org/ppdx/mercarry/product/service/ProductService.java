@@ -21,6 +21,11 @@ public class ProductService {
 		return productRepository.findBySupplier(supplier);
 	}
 
+	public void createProduct(Product product, User supplier) {
+		product.setSupplier(supplier);
+		productRepository.save(product);
+	}
+
 	public void saveProduct(Product product) {
 		productRepository.save(product);
 	}

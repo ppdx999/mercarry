@@ -41,8 +41,7 @@ public class MypageController extends BaseController {
 		if (valid.hasErrors()) {
 			return "mypage/products/new";
 		}
-		product.setSupplier(user);
-		productService.saveProduct(product);
+		productService.createProduct(product, user);
 		return "redirect:/mypage/products";
 	}
 }
