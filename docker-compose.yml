@@ -1,0 +1,21 @@
+services:
+  db:
+    image: library/postgres:16
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    networks:
+      - mercarrynet
+    volumes:
+      - mercarry-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: mercarry_user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mercarry_db
+      POSTGRES_HOST_AUTH_METHOD: trust
+volumes:
+  mercarry-db:
+    driver: local
+networks:
+  mercarrynet:
+    driver: bridge
