@@ -48,7 +48,7 @@ public class MainControllerTest {
     }
 
     @Test
-    void whenNotLoggedIn_thenSignInAndSignUpDisplayed() throws Exception {
+    void testWhenNotLoggedIn_thenSignInAndSignUpDisplayed() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andDo(print())
@@ -58,7 +58,7 @@ public class MainControllerTest {
 
     @Test
     @WithMockUser(username = "testuser")
-    void whenLoggedIn_thenMypageLinkAndSignoutFormIsDisplayed() throws Exception {
+    void testWhenLoggedIn_thenMypageLinkAndSignoutFormIsDisplayed() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andDo(print())
