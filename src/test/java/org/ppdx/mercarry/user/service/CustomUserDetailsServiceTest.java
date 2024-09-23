@@ -40,6 +40,8 @@ public class CustomUserDetailsServiceTest {
 
         // Act
         UserDetails userDetails = customUserDetailsService.loadUserByUsername("test");
+
+        // Assert
         assertThat(userDetails.getUsername()).isEqualTo("test");
         assertThat(userDetails.getPassword()).isEqualTo("encodedPassword");
     }
