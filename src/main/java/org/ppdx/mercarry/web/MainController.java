@@ -18,8 +18,8 @@ public class MainController extends BaseController {
     @Autowired
     private UserService userService;
 
-		@Autowired
-		private ProductService productService;
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/")
     public String index(Model model) {

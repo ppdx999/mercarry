@@ -7,6 +7,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.ppdx.mercarry.product.service.ProductService;
@@ -37,11 +39,16 @@ public class MypageController extends BaseController {
 	}
 
 	@PostMapping("/mypage/products")
-	public String createProduct(@Validated @ModelAttribute Product product, BindingResult valid, @AuthenticationPrincipal User user) {
+	public String createProduct(
+			@Validated @ModelAttribute Product product,
+			BindingResult valid,
+			@RequestParam("image") MultipartFile imgFile,
+			@AuthenticationPrincipal User user) throws Exception {
 		if (valid.hasErrors()) {
 			return "mypage/products/new";
 		}
-		productService.createProduct(product, user);
+
+		productService.createProduct(product, user, imgFile);
 		return "redirect:/mypage/products";
 	}
 }

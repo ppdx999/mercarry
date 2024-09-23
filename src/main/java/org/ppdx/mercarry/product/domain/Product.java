@@ -27,4 +27,8 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "supplier_id")
 	private User supplier;
+
+	@OneToOne
+	@JoinColumn(name = "top_image_id")
+	private ProductImage topImage;
 }
