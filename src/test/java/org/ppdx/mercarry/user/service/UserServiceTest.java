@@ -62,7 +62,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testRegisterNewUserWithDuplicateUsername() {
+    void testRegisterNewUserFailWithDuplicateUsername() {
         when(userRepository.findByUsername("testuser")).thenReturn(Optional.of(new User()));
 
         assertThatThrownBy(() -> userService.registerNewUser("testuser", "testpassword"))
