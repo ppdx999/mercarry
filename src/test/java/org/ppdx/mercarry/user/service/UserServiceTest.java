@@ -6,6 +6,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.ppdx.mercarry.core.BusinessException;
 import org.ppdx.mercarry.user.domain.Role;
 import org.ppdx.mercarry.user.domain.User;
 import org.ppdx.mercarry.user.repository.RoleRepository;
@@ -43,14 +44,11 @@ public class UserServiceTest {
 
     @Test
     void testRegisterNewUser() {
-        // モックの動作設定
         when(passwordEncoder.encode(anyString())).thenReturn("encodedPassword");
         when(roleRepository.findByName("USER")).thenReturn(Optional.of(new Role(1L, "USER")));
 
-        // ユーザー登録のテスト
         userService.registerNewUser("testuser", "testpassword");
 
-        // 保存されたユーザーをキャプチャ
         ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
         verify(userRepository).save(userCaptor.capture());
 
@@ -68,8 +66,8 @@ public class UserServiceTest {
         when(userRepository.findByUsername("testuser")).thenReturn(Optional.of(new User()));
 
         assertThatThrownBy(() -> userService.registerNewUser("testuser", "testpassword"))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessage("Username already exists");
+                .isInstanceOf(BusinessException.class)
+                .hasMessage("This username is already taken.");
 
         verify(userRepository, never()).save(any(User.class));
     }
