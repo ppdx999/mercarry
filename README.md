@@ -23,3 +23,11 @@ GRANT ALL PRIVILEGES ON DATABASE mercarry_db TO mercarry_user;
 ```
 ./gradlew bootRun
 ```
+
+# Helps
+
+To start postgres's sql console
+
+```
+docker compose exec db psql -U mercarry_user mercarry_db
+```
