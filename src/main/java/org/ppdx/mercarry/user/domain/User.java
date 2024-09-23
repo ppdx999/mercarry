@@ -6,6 +6,7 @@ import lombok.Setter;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,8 +20,13 @@ public class User implements UserDetails {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+
+  @Length(min = 4, message = "Username must be at least 4 characters")
   private String username;
+
+  @Length(min = 8, message = "Password must be at least 8 characters")
   private String password;
+
   private boolean enabled;
 
   @ManyToMany(fetch = FetchType.EAGER)

@@ -1,5 +1,6 @@
 package org.ppdx.mercarry.user.service;
 
+import org.ppdx.mercarry.core.BusinessException;
 import org.ppdx.mercarry.user.domain.Role;
 import org.ppdx.mercarry.user.domain.User;
 import org.ppdx.mercarry.user.repository.RoleRepository;
@@ -23,16 +24,15 @@ public class UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
     public User registerNewUser(String username, String password) {
-        User user = new User();
-
         // Check if the username already exists.
         // This check is not working properly in multi-threaded environment because
         // the check is not atomic. To ensure the uniqueness of the username, the
         // username column has unique constraint in the database.
         if (userRepository.findByUsername(username).isPresent()) {
-            throw new RuntimeException("Username already exists");
+            throw new BusinessException("This username is already taken.");
         }
-        user.setUsername(username);
+
+        User user = new User();
         user.setPassword(passwordEncoder.encode(password));
         user.setEnabled(true);
 
