@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.math.BigDecimal;
 
 @Service
 public class ProductService {
@@ -26,13 +27,18 @@ public class ProductService {
 		return productRepository.findBySupplier(supplier);
 	}
 
-	public void createProduct(Product product, User supplier, MultipartFile imgFile) throws Exception {
+	public Product createProduct(String name, BigDecimal price, User supplier, MultipartFile imgFile) throws Exception {
+		Product product = new Product();
+		product.setName(name);
+		product.setPrice(price);
 		product.setSupplier(supplier);
 		productRepository.save(product);
 
 		ProductImage productImage = productImageService.createProductImage(product, imgFile);
+
 		product.setTopImage(productImage);
-		saveProduct(product);
+		productRepository.save(product);
+		return product;
 	}
 
 	public void saveProduct(Product product) {

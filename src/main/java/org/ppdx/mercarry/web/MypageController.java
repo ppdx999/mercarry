@@ -48,7 +48,7 @@ public class MypageController extends BaseController {
 			return "mypage/products/new";
 		}
 
-		productService.createProduct(product, user, imgFile);
+		productService.createProduct(product.getName(), product.getPrice(), user, imgFile);
 		return "redirect:/mypage/products";
 	}
 }

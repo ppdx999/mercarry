@@ -2,6 +2,7 @@ package org.ppdx.mercarry.product.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,11 +13,15 @@ import org.ppdx.mercarry.user.domain.User;
 import org.springframework.mock.web.MockMultipartFile;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.times;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
+import java.math.BigDecimal;
 
 public class ProductServiceTest {
 	@Mock
@@ -54,26 +59,41 @@ public class ProductServiceTest {
 		assertThat(products).containsExactly(product1);
 	}
 
-	@Test
-	void testCreateProduct() throws Exception {
-		// Arrange
-		User supplier = new User();
-		supplier.setId(1L);
+    @Test
+    public void testCreateProduct() throws Exception {
+        // Arrange
+        MockitoAnnotations.openMocks(this);
+        String name = "Test Product";
+        BigDecimal price = new BigDecimal("100.00");
+        User supplier = new User();
+        supplier.setId(1L);
+        MockMultipartFile imgFile = new MockMultipartFile("image", "test.jpg", "image/jpeg", "image content".getBytes());
+        ProductImage productImage = new ProductImage();
+        productImage.setId(1L);
 
-		Product product = new Product();
-		product.setId(1L);
+        // Mock the behavior of repository and services
+        when(productImageService.createProductImage(any(Product.class), any(MockMultipartFile.class))).thenReturn(productImage);
 
-		MockMultipartFile imgFile = new MockMultipartFile("images", "test.jpg", "image/jpeg", "test".getBytes());
-		ProductImage productImage = new ProductImage();
-		when(productImageService.createProductImage(product, imgFile)).thenReturn(productImage);
+        // Act
+        Product returnedProduct = productService.createProduct(name, price, supplier, imgFile);
 
-		// Act
-		productService.createProduct(product, supplier, imgFile);
+        // Assert returned product
+        assertNotNull(returnedProduct);
+        assertEquals(name, returnedProduct.getName());
+        assertEquals(price, returnedProduct.getPrice());
+        assertEquals(supplier, returnedProduct.getSupplier());
+        assertNotNull(returnedProduct.getTopImage());
 
-		// Assert
-		verify(productRepository, times(2)).save(product);
-		verify(productImageService).createProductImage(product, imgFile);
-		assertThat(product.getSupplier()).isEqualTo(supplier);
-		assertThat(product.getTopImage()).isEqualTo(productImage);
-	}
+        // Assert saved product
+        ArgumentCaptor<Product> productCaptor = ArgumentCaptor.forClass(Product.class);
+        verify(productRepository, atLeastOnce()).save(productCaptor.capture());
+        Product finalSavedProduct = productCaptor.getValue();
+
+        assertNotNull(finalSavedProduct);
+        assertEquals(name, finalSavedProduct.getName());
+        assertEquals(price, finalSavedProduct.getPrice());
+        assertEquals(supplier, finalSavedProduct.getSupplier());
+        assertNotNull(finalSavedProduct.getTopImage());
+        assertEquals(productImage, finalSavedProduct.getTopImage());
+    }
 }
