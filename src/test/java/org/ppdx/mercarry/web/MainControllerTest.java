@@ -58,10 +58,11 @@ public class MainControllerTest {
 
     @Test
     @WithMockUser(username = "testuser")
-    void whenLoggedIn_thenUsernameDisplayed() throws Exception {
+    void whenLoggedIn_thenMypageLinkAndSignoutFormIsDisplayed() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andDo(print())
-                .andExpect(xpath("//a[@href='/mypage']").exists());
+                .andExpect(xpath("//a[@href='/mypage']").exists())
+                .andExpect(xpath("//form[@action='/signout']").exists());
     }
 }
