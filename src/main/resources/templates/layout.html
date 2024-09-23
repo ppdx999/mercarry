@@ -30,7 +30,9 @@
 								<a class="nav-link" th:href="@{/mypage}">My Page</a>
 							</li>
 							<li class="nav-item" th:classappend="${currentPath == '/signout'} ? 'active'" th:if="${#authentication.name != 'anonymousUser'}">
-								<a class="nav-link" th:href="@{/signout}">Sign Out</a>
+								<form th:action="@{/signout}" method="post">
+									<button type="submit" class="nav-link" style="background-color: transparent; border: none;">Sign Out</button>
+								</form>
 							</li>
 						</ul>
 				</div>

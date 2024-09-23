@@ -35,6 +35,7 @@ public class SecurityConfig {
         http
                 .formLogin(login -> login.permitAll().defaultSuccessUrl("/", true)
                         .loginPage("/signin"))
+                .logout(logout -> logout.logoutSuccessUrl("/").logoutUrl("/signout"))
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/", "/signin", "/signup", "/css/**", "/js/**", "/images/**").permitAll()
                         .anyRequest().authenticated());
