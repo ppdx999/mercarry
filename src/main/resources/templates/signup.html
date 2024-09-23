@@ -6,7 +6,8 @@
 	<main>
     <h1>ユーザー登録</h1>
     <p class="text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></p>
-    <form th:action="@{/signup}" th:object="${user}" method="post">
+    <form id="signupForm" th:action="@{/signup}" th:object="${user}" method="post">
+        
         <div>
             <label for="username">ユーザー名:</label>
             <input type="text" id="username" name="username" th:field="*{username}" th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"></input>
@@ -18,7 +19,7 @@
             <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="invalid-feedback"></p>
         </div>
         <div>
-            <button type="submit">登録</button>
+            <button type="submit" name="submit">登録</button>
         </div>
     </form>
 	</main>
