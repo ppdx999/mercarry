@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{layout :: head}"></head>
-<body>
+<body class="d-flex flex-column vh-100">
 	<header th:insert="~{layout :: header}"></header>
-	<main>
-    <h1>ユーザー登録</h1>
+	<main class="flex-fill d-flex flex-column justify-content-center align-items-center">
+    <h1 class="mb-3">ユーザー登録</h1>
     <p class="text-danger" th:if="${errorMessage}" th:text="${errorMessage}"></p>
-    <form id="signupForm" th:action="@{/signup}" th:object="${user}" method="post">
-        
-        <div>
-            <label for="username">ユーザー名:</label>
-            <input type="text" id="username" name="username" th:field="*{username}" th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"></input>
+    <form id="signupForm" th:action="@{/signup}" th:object="${user}" method="post" style="min-width: 280px;">
+        <div class="mb-3">
+            <label for="username" class="form-label">ユーザー名:</label>
+            <input type="text" class="form-control"  id="username" name="username" th:field="*{username}" th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"></input>
             <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="invalid-feedback"></p>
         </div>
-        <div>
-            <label for="password">パスワード:</label>
-            <input type="password" id="password" name="password" th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"></input>
+        <div class="mb-3">
+            <label for="password" class="form-label">パスワード:</label>
+            <input type="password" class="form-control" id="password" name="password" th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"></input>
             <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="invalid-feedback"></p>
         </div>
-        <div>
-            <button type="submit" name="submit">登録</button>
+        <div class="mb-3">
+            <button type="submit" name="submit" class="btn btn-primary">登録</button>
         </div>
     </form>
 	</main>
-	<footer th:insert="~{layout :: footer}"></footer>
 	<div th:insert="~{layout :: dependencies}"></div>
 </body>
 </html>

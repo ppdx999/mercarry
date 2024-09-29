@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{layout :: head}"></head>
-<body>
+<body class="d-flex flex-column vh-100">
 	<header th:insert="~{layout :: header}"></header>
-	<main>
-		<h1>ログイン</h1>
-        <form id="signinForm" th:action="@{/signin}" method="post">
-            <div>
-                <label for="username">ユーザー名:</label>
-                <input type="text" id="username" name="username" required>
+	<main class="flex-fill d-flex flex-column justify-content-center align-items-center">
+		<h1 class="mb-3">ログイン</h1>
+        <p th:if="${param.error}" class="alert alert-danger text-center">ユーザー名またはパスワードが間違っています。</p>
+        <form id="signinForm" th:action="@{/signin}" method="post" style="min-width: 280px;">
+            <div class="mb-3">
+                <label for="username" class="form-label">ユーザー名:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
             </div>
-            <div>
-                <label for="password">パスワード:</label>
-                <input type="password" id="password" name="password" required>
+            <div class="mb-3">
+                <label for="password" class="form-label">パスワード:</label>
+                <input type="password"  class="form-control" id="password" name="password" required>
             </div>
-            <div>
-                <button type="submit" name="submit">ログイン</button>
+            <div class="mb-3">
+                <button type="submit" name="submit" class="btn btn-primary">ログイン</button>
             </div>
         </form>
 	</main>
-	<footer th:insert="~{layout :: footer}"></footer>
 	<div th:insert="~{layout :: dependencies}"></div>
 </body>
 </html>
