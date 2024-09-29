@@ -3,15 +3,29 @@
 <head th:insert="~{layout :: head}"></head>
 <body>
 	<header th:insert="~{layout :: header}"></header>
-	<main>
-		<h1 class="testcss">Welcome to Mercarry! v2!</h1>
-		<div>
-			<ul>
-				<li th:each="product : ${products}">
-						<p th:text="${product.name}">Product Name</p>
-						<p th:text="${product.price}">Price</p>
-				</li>
-			</ul>
+	<main class="content container">
+		<div class="row justify-content-center">
+			<div class="card col-lg-3 m-3" th:each="product : ${products}">
+				<img th:src="@{'/product-images/' + ${product.topImage.id}}" class="p-1" alt="image placeholder">
+				<div class="card-body">
+					<h5 class="card-title" th:text="${product.name}">Product Name</h5>
+					<p class="card-text" th:text="${product.price}">Product Price</p>
+				</div>
+			</div>
+			<div class="card col-lg-3 m-3" th:each="product : ${products}">
+				<img th:src="@{'/product-images/' + ${product.topImage.id}}" class="p-1" alt="image placeholder">
+				<div class="card-body">
+					<h5 class="card-title" th:text="${product.name}">Product Name</h5>
+					<p class="card-text" th:text="${product.price}">Product Price</p>
+				</div>
+			</div>
+			<div class="card col-lg-3 m-3" th:each="product : ${products}">
+				<img th:src="@{'/product-images/' + ${product.topImage.id}}" class="p-1" alt="image placeholder">
+				<div class="card-body">
+					<h5 class="card-title" th:text="${product.name}">Product Name</h5>
+					<p class="card-text" th:text="${product.price}">Product Price</p>
+				</div>
+			</div>
 		</div>
 	</main>
 	<footer th:insert="~{layout :: footer}"></footer>
