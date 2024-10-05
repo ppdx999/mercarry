@@ -5,27 +5,15 @@
 	<header th:insert="~{layout :: header}"></header>
 	<div class="d-flex">
 		<div th:insert="~{layout :: sidebar}"></div>
-		<main class="content container">
-			<div class="row justify-content-center">
-				<div class="card col-lg-3 m-3" th:each="product : ${products}">
-					<img th:src="@{'/product-images/' + ${product.topImage.id}}" class="p-1" alt="image placeholder"></img>
-					<div class="card-body">
-						<h5 class="card-title" th:text="${product.name}">Product Name</h5>
-						<p class="card-text" th:text="${product.price}">Product Price</p>
-					</div>
-				</div>
-				<div class="card col-lg-3 m-3" th:each="product : ${products}">
-					<img th:src="@{'/product-images/' + ${product.topImage.id}}" class="p-1" alt="image placeholder"></img>
-					<div class="card-body">
-						<h5 class="card-title" th:text="${product.name}">Product Name</h5>
-						<p class="card-text" th:text="${product.price}">Product Price</p>
-					</div>
-				</div>
-				<div class="card col-lg-3 m-3" th:each="product : ${products}">
-					<img th:src="@{'/product-images/' + ${product.topImage.id}}" class="p-1" alt="image placeholder"></img>
-					<div class="card-body">
-						<h5 class="card-title" th:text="${product.name}">Product Name</h5>
-						<p class="card-text" th:text="${product.price}">Product Price</p>
+		<main class="content container mx-auto">
+			<div class="row g-3">
+				<div class="col-lg-4" th:each="product : ${products}">
+					<div class="card">
+						<img th:src="@{'/product-images/' + ${product.topImage.id}}" class="p-1" alt="image placeholder"></img>
+						<div class="card-body">
+							<h5 class="card-title" th:text="${product.name}">Product Name</h5>
+							<p class="card-text" th:text="${#numbers.formatInteger(product.price, 0, 'COMMA')} + '円'">Price</p>
+						</div>
 					</div>
 				</div>
 			</div>
