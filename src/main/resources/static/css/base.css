@@ -27,3 +27,29 @@
 	margin: 2rem;
 	flex: 1;
 }
+
+.select-radio label {
+	display: block;
+	border: 2px solid #ccc;
+	padding: 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	text-align: center;
+	transition: border-color 0.3s;
+}
+
+.select-radio:hover {
+	border-color: #666;
+}
+
+.select-radio input[type="radio"] {
+	display: none;
+}
+
+.select-radio input[type="radio"]:checked + label {
+	border-color: skyblue;
+}
+
+.select-radio label {
+	display: block;
+}

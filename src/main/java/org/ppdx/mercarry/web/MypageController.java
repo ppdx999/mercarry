@@ -13,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.ppdx.mercarry.product.service.ProductService;
 import org.ppdx.mercarry.user.domain.User;
+import org.ppdx.mercarry.user.service.UserService;
+
+import java.math.BigDecimal;
+
 import org.ppdx.mercarry.product.domain.Product;
 
 @Controller
@@ -20,6 +24,9 @@ public class MypageController extends BaseController {
 
 	@Autowired
 	private ProductService productService;
+
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("/mypage")
 	public String index(Model model) {
@@ -50,5 +57,17 @@ public class MypageController extends BaseController {
 
 		productService.createProduct(product.getName(), product.getPrice(), user, imgFile);
 		return "redirect:/mypage/products";
+	}
+
+	@GetMapping("/mypage/wallet")
+	public String wallet(Model model, @AuthenticationPrincipal User user) {
+		model.addAttribute("wallet", user.getWallet());
+		return "mypage/wallet/index";
+	}
+
+	@PostMapping("/mypage/wallet/charge")
+	public String chargeWallet(@RequestParam("amount") BigDecimal amount, @AuthenticationPrincipal User user) {
+		userService.chargeWallet(user, amount);
+		return "redirect:/mypage/wallet";
 	}
 }

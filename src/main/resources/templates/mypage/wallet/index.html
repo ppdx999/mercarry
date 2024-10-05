@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+	<head th:insert="~{layout :: head}"></head>
+<body>
+	<header th:insert="~{layout :: header}"></header>
+	<div class="d-flex">
+		<div th:insert="~{layout :: sidebar}"></div>
+		<main class="container content d-flex flex-column align-items-center">
+			<div th:insert="~{icons :: wallet}"></div>
+             <p class="display-6 text-center mt-3">残高: <span th:text="${#numbers.formatInteger(wallet.balance, 0, 'COMMA')}"></span>円</p>
+            <form th:action="@{/mypage/wallet/charge}" method="post" class="d-flex flex-column align-items-center">
+                <div>
+                    <label for="amount" class="form-label">チャージ金額</label>
+                    <div class="row g-3">
+                        <div class="select-radio col-6">
+                            <input id="amount1000" type="radio" name="amount" value="1000">
+                            <label for="amount1000">
+                                1,000円
+                            </label>
+                        </div>
+                        <div class="select-radio col-6">
+                            <input id="amount3000" type="radio" name="amount" value="3000">
+                            <label for="amount3000">
+                                3,000円
+                            </label>
+                        </div>
+                        <div class="select-radio col-6">
+                            <input id="amount5000" type="radio" name="amount" value="5000">
+                            <label for="amount5000">
+                                5,000円
+                            </label>
+                        </div>
+                        <div class="select-radio col-6">
+                            <input id="amount10000" type="radio" name="amount" value="10000">
+                            <label for="amount10000">
+                                10,000円
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">チャージ</button>
+            </form>
+		</main>
+	</div>
+	<div th:insert="~{layout :: dependencies}"></div>
+</body>
+
