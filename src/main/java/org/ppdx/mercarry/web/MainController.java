@@ -56,6 +56,9 @@ public class MainController extends BaseController {
         } catch (BusinessException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "signup";
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "An unexpected error occurred. Please try again later.");
+            return "signup";
         }
     }
 }

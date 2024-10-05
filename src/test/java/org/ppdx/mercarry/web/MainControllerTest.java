@@ -132,4 +132,20 @@ public class MainControllerTest {
                 .andExpect(xpath("//p[@class='text-danger']")
                         .string("This username is already taken."));
     }
+
+
+    @Test
+    void testShowErrorMessageWhenSignupUserFailWithUnexpectedError() throws Exception {
+        when(userService.registerNewUser("testuser", "password"))
+                .thenThrow(new RuntimeException("Unexpected error"));
+
+        mockMvc.perform(post("/signup")
+                .param("username", "testuser")
+                .param("password", "password")
+                .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("signup"))
+                .andExpect(xpath("//p[@class='text-danger']")
+                        .string("An unexpected error occurred. Please try again later."));
+    }
 }
