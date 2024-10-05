@@ -5,6 +5,7 @@ import org.ppdx.mercarry.product.domain.Product;
 import org.ppdx.mercarry.product.service.ProductService;
 import org.ppdx.mercarry.user.domain.User;
 import org.ppdx.mercarry.user.service.UserService;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,9 @@ public class MainController extends BaseController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private Logger logger;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -57,6 +61,7 @@ public class MainController extends BaseController {
             model.addAttribute("errorMessage", e.getMessage());
             return "signup";
         } catch (Exception e) {
+            logger.error("An unexpected error occurred.", e);
             model.addAttribute("errorMessage", "An unexpected error occurred. Please try again later.");
             return "signup";
         }
