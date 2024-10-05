@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.math.BigDecimal;
 
 @Service
 public class UserService {
@@ -22,6 +23,9 @@ public class UserService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private WalletService walletService;
 
     public User registerNewUser(String username, String password) {
         // Check if the username already exists.
@@ -44,5 +48,9 @@ public class UserService {
         user.setRoles(Set.of(role));
 
         return userRepository.save(user);
+    }
+
+    public void chargeWallet(User user, BigDecimal amount) {
+        walletService.chargeWallet(user.getWallet(), amount);
     }
 }
