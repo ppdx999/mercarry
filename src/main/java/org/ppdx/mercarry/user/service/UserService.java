@@ -8,6 +8,7 @@ import org.ppdx.mercarry.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 import java.math.BigDecimal;
@@ -27,6 +28,7 @@ public class UserService {
     @Autowired
     private WalletService walletService;
 
+    @Transactional
     public User registerNewUser(String username, String password) {
         // Check if the username already exists.
         // This check is not working properly in multi-threaded environment because
@@ -47,6 +49,7 @@ public class UserService {
 
         user.setRoles(Set.of(role));
 
+        walletService.createWallet(user);
         return userRepository.save(user);
     }
 

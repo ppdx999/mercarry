@@ -34,6 +34,9 @@ public class UserServiceTest {
     @Mock
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Mock
+    private WalletService walletService;
+
     @InjectMocks
     private UserService userService;
 

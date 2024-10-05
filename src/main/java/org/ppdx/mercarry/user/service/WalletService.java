@@ -1,5 +1,6 @@
 package org.ppdx.mercarry.user.service;
 
+import org.ppdx.mercarry.user.domain.User;
 import org.ppdx.mercarry.user.domain.Wallet;
 import org.ppdx.mercarry.user.repository.WalletRepository;
 
@@ -15,6 +16,13 @@ public class WalletService {
 
     @Autowired
     private WalletRepository walletRepository;
+
+    public Wallet createWallet(User user) {
+        Wallet wallet = new Wallet();
+        wallet.setBalance(BigDecimal.ZERO);
+        wallet.setUser(user);
+        return walletRepository.save(wallet);
+    }
 
     public void chargeWallet(Wallet wallet, BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
