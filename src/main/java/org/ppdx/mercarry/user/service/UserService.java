@@ -49,8 +49,9 @@ public class UserService {
 
         user.setRoles(Set.of(role));
 
+        userRepository.save(user);
         walletService.createWallet(user);
-        return userRepository.save(user);
+        return user;
     }
 
     public void chargeWallet(User user, BigDecimal amount) {
