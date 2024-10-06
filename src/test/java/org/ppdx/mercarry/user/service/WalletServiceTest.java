@@ -38,7 +38,7 @@ public class WalletServiceTest {
         Wallet wallet = new Wallet();
         wallet.setBalance(BigDecimal.ZERO);
 
-        walletService.topUpWallet(wallet, new BigDecimal("100"));
+        walletService.topUp(wallet, new BigDecimal("100"));
 
         ArgumentCaptor<Wallet> walletCaptor = ArgumentCaptor.forClass(Wallet.class);
         verify(walletRepository).save(walletCaptor.capture());
@@ -53,7 +53,7 @@ public class WalletServiceTest {
         Wallet wallet = new Wallet();
         wallet.setBalance(BigDecimal.ZERO);
 
-        assertThatThrownBy(() -> walletService.topUpWallet(wallet, new BigDecimal(amount)))
+        assertThatThrownBy(() -> walletService.topUp(wallet, new BigDecimal(amount)))
                 .isInstanceOf(BusinessException.class)
                 .hasMessage("Amount must be positive.");
 
@@ -65,7 +65,7 @@ public class WalletServiceTest {
 				Wallet wallet = new Wallet();
 				wallet.setBalance(new BigDecimal("100"));
 
-				walletService.withdrawWallet(wallet, new BigDecimal("50"));
+				walletService.withdraw(wallet, new BigDecimal("50"));
 
 				ArgumentCaptor<Wallet> walletCaptor = ArgumentCaptor.forClass(Wallet.class);
 				verify(walletRepository).save(walletCaptor.capture());
@@ -79,7 +79,7 @@ public class WalletServiceTest {
 				Wallet wallet = new Wallet();
 				wallet.setBalance(new BigDecimal("100"));
 
-				assertThatThrownBy(() -> walletService.withdrawWallet(wallet, new BigDecimal("0")))
+				assertThatThrownBy(() -> walletService.withdraw(wallet, new BigDecimal("0")))
 						.isInstanceOf(BusinessException.class)
 						.hasMessage("Amount must be positive.");
 
@@ -91,7 +91,7 @@ public class WalletServiceTest {
 				Wallet wallet = new Wallet();
 				wallet.setBalance(new BigDecimal("100"));
 
-				assertThatThrownBy(() -> walletService.withdrawWallet(wallet, new BigDecimal("200")))
+				assertThatThrownBy(() -> walletService.withdraw(wallet, new BigDecimal("200")))
 						.isInstanceOf(BusinessException.class)
 						.hasMessage("Insufficient balance.");
 

@@ -50,11 +50,11 @@ public class UserService {
         user.setRoles(Set.of(role));
 
         userRepository.save(user);
-        walletService.createWallet(user);
+        walletService.create(user);
         return user;
     }
 
     public void chargeWallet(User user, BigDecimal amount) {
-        walletService.topUpWallet(user.getWallet(), amount);
+        walletService.topUp(user.getWallet(), amount);
     }
 }

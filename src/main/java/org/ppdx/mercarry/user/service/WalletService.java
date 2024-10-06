@@ -17,14 +17,14 @@ public class WalletService {
     @Autowired
     private WalletRepository walletRepository;
 
-    public Wallet createWallet(User user) {
+    public Wallet create(User user) {
         Wallet wallet = new Wallet();
         wallet.setBalance(BigDecimal.ZERO);
         wallet.setUser(user);
         return walletRepository.save(wallet);
     }
 
-    public void topUpWallet(Wallet wallet, BigDecimal amount) {
+    public void topUp(Wallet wallet, BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new BusinessException("Amount must be positive.");
         }
@@ -32,7 +32,7 @@ public class WalletService {
         walletRepository.save(wallet);
     }
 
-		public void withdrawWallet(Wallet wallet, BigDecimal amount) {
+		public void withdraw(Wallet wallet, BigDecimal amount) {
 				if (amount.compareTo(BigDecimal.ZERO) <= 0) {
 						throw new BusinessException("Amount must be positive.");
 				}
