@@ -59,4 +59,42 @@ public class WalletServiceTest {
 
         verify(walletRepository, never()).save(any());
     }
+
+		@Test
+		void testWithdrawWallet() {
+				Wallet wallet = new Wallet();
+				wallet.setBalance(new BigDecimal("100"));
+
+				walletService.withdrawWallet(wallet, new BigDecimal("50"));
+
+				ArgumentCaptor<Wallet> walletCaptor = ArgumentCaptor.forClass(Wallet.class);
+				verify(walletRepository).save(walletCaptor.capture());
+
+				Wallet capturedWallet = walletCaptor.getValue();
+				assertThat(capturedWallet.getBalance()).isEqualTo(new BigDecimal("50"));
+		}
+
+		@Test
+		void testWithdrawWalletFailedWhenAmountIsNotPositive() {
+				Wallet wallet = new Wallet();
+				wallet.setBalance(new BigDecimal("100"));
+
+				assertThatThrownBy(() -> walletService.withdrawWallet(wallet, new BigDecimal("0")))
+						.isInstanceOf(BusinessException.class)
+						.hasMessage("Amount must be positive.");
+
+				verify(walletRepository, never()).save(any());
+		}
+
+		@Test
+		void testWithdrawWalletFailedWhenInsufficientBalance() {
+				Wallet wallet = new Wallet();
+				wallet.setBalance(new BigDecimal("100"));
+
+				assertThatThrownBy(() -> walletService.withdrawWallet(wallet, new BigDecimal("200")))
+						.isInstanceOf(BusinessException.class)
+						.hasMessage("Insufficient balance.");
+
+				verify(walletRepository, never()).save(any());
+		}
 }

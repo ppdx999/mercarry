@@ -31,4 +31,15 @@ public class WalletService {
         wallet.setBalance(wallet.getBalance().add(amount));
         walletRepository.save(wallet);
     }
+
+		public void withdrawWallet(Wallet wallet, BigDecimal amount) {
+				if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+						throw new BusinessException("Amount must be positive.");
+				}
+				if (wallet.getBalance().compareTo(amount) < 0) {
+						throw new BusinessException("Insufficient balance.");
+				}
+				wallet.setBalance(wallet.getBalance().subtract(amount));
+				walletRepository.save(wallet);
+		}
 }
