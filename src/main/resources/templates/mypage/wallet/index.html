@@ -8,7 +8,7 @@
 		<main class="container content d-flex flex-column align-items-center">
 			<div th:insert="~{icons :: wallet}"></div>
              <p class="display-6 text-center mt-3">残高: <span th:text="${#numbers.formatInteger(wallet.balance, 0, 'COMMA')}"></span>円</p>
-            <form th:action="@{/mypage/wallet/charge}" method="post" class="d-flex flex-column align-items-center">
+            <form th:action="@{/mypage/wallet/topup}" method="post" class="d-flex flex-column align-items-center">
                 <div>
                     <label for="amount" class="form-label">チャージ金額</label>
                     <div class="row g-3">

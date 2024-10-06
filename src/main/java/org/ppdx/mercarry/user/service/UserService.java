@@ -54,7 +54,7 @@ public class UserService {
         return user;
     }
 
-    public void chargeWallet(User user, BigDecimal amount) {
+    public void topUpWallet(User user, BigDecimal amount) {
         walletService.topUp(user.getWallet(), amount);
     }
 }

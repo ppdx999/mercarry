@@ -65,9 +65,9 @@ public class MypageController extends BaseController {
 		return "mypage/wallet/index";
 	}
 
-	@PostMapping("/mypage/wallet/charge")
-	public String chargeWallet(@RequestParam("amount") BigDecimal amount, @AuthenticationPrincipal User user) {
-		userService.chargeWallet(user, amount);
+	@PostMapping("/mypage/wallet/topup")
+	public String topupWallet(@RequestParam("amount") BigDecimal amount, @AuthenticationPrincipal User user) {
+		userService.topUpWallet(user, amount);
 		return "redirect:/mypage/wallet";
 	}
 }
