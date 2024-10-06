@@ -2,18 +2,25 @@ package org.ppdx.mercarry.product.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.*;
 
 import java.math.BigDecimal;
 
+import org.ppdx.mercarry.core.BusinessException;
 import org.ppdx.mercarry.user.domain.User;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "products")
 public class Product {
+	public Product(Status status) {
+		this.status = status;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -36,8 +43,47 @@ public class Product {
 	private Status status;
 
 	public enum Status {
-			DISABLED,
-			ACTIVE,
-			SOLD_OUT
+			DISABLED {
+				@Override
+				public Status transitionTo(Status newStatus) {
+					if (newStatus == Status.ACTIVE) {
+						return Status.ACTIVE;
+					} else if (newStatus == Status.DISABLED) {
+						return Status.DISABLED;
+					} else {
+						throw new BusinessException("Invalid status transition: " + this + " -> " + newStatus);
+					}
+				}
+			},
+			ACTIVE {
+				@Override
+				public Status transitionTo(Status newStatus) {
+					if (newStatus == Status.SOLD_OUT) {
+						return Status.SOLD_OUT;
+					} else if (newStatus == Status.ACTIVE) {
+						return Status.ACTIVE;
+					} else if (newStatus == Status.DISABLED) {
+						return Status.DISABLED;
+					} else {
+						throw new BusinessException("Invalid status transition: " + this + " -> " + newStatus);
+					}
+				}
+			},
+			SOLD_OUT {
+				@Override
+				public Status transitionTo(Status newStatus) {
+					if (newStatus == Status.SOLD_OUT) {
+						return Status.SOLD_OUT;
+					} else {
+						throw new BusinessException("Invalid status transition: " + this + " -> " + newStatus);
+					}
+				}
+			};
+
+			public abstract Status transitionTo(Status newStatus);
+	}
+	
+	public void setStatus(Status status) {
+		this.status = this.status.transitionTo(status);
 	}
 }
