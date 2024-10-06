@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.any;
 
 import java.math.BigDecimal;
@@ -96,5 +97,25 @@ public class WalletServiceTest {
 						.hasMessage("Insufficient balance.");
 
 				verify(walletRepository, never()).save(any());
+		}
+
+		@Test
+		void testTransfer() {
+				Wallet fromWallet = new Wallet();
+				fromWallet.setBalance(new BigDecimal("100"));
+
+				Wallet toWallet = new Wallet();
+				toWallet.setBalance(new BigDecimal("50"));
+
+				walletService.transfer(fromWallet, toWallet, new BigDecimal("10"));
+
+				ArgumentCaptor<Wallet> walletCaptor = ArgumentCaptor.forClass(Wallet.class);
+				verify(walletRepository, times(2)).save(walletCaptor.capture());
+
+				Wallet capturedFromWallet = walletCaptor.getAllValues().get(0);
+				Wallet capturedToWallet = walletCaptor.getAllValues().get(1);
+
+				assertThat(capturedFromWallet.getBalance()).isEqualTo(new BigDecimal("90"));
+				assertThat(capturedToWallet.getBalance()).isEqualTo(new BigDecimal("60"));
 		}
 }

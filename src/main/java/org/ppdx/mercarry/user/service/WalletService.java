@@ -6,7 +6,7 @@ import org.ppdx.mercarry.user.repository.WalletRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import org.ppdx.mercarry.core.BusinessException;
 
 import java.math.BigDecimal;
@@ -41,5 +41,11 @@ public class WalletService {
 				}
 				wallet.setBalance(wallet.getBalance().subtract(amount));
 				walletRepository.save(wallet);
+		}
+
+		@Transactional
+		public void transfer(Wallet fromWallet, Wallet toWallet, BigDecimal amount) {
+			withdraw(fromWallet, amount);
+			topUp(toWallet, amount);
 		}
 }
