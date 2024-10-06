@@ -37,7 +37,14 @@ public class SecurityConfig {
                         .loginPage("/signin"))
                 .logout(logout -> logout.logoutSuccessUrl("/").logoutUrl("/signout"))
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/", "/signin", "/signup", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers(
+                            "/",
+                            "/signin",
+                            "/signup",
+                            "/css/**",
+                            "/js/**",
+                            "/images/**",
+                            "/product-images/**").permitAll()
                         .anyRequest().authenticated());
 
         return http.build();
