@@ -46,6 +46,12 @@ public class ProductService {
 		return product;
 	}
 
+	public Product markAsSoldOut(Product product) {
+		product.setStatus(Product.Status.SOLD_OUT);
+		productRepository.save(product);
+		return product;
+	}
+
 	public void saveProduct(Product product) {
 		productRepository.save(product);
 	}

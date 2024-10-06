@@ -96,4 +96,18 @@ public class ProductServiceTest {
         assertNotNull(finalSavedProduct.getTopImage());
         assertEquals(productImage, finalSavedProduct.getTopImage());
     }
+
+		@Test
+		void testMarkAsSoldOut() {
+				// Arrange
+				Product product = new Product();
+				product.setStatus(Product.Status.ACTIVE);
+
+				// Act
+				Product returnedProduct = productService.markAsSoldOut(product);
+
+				// Assert
+				assertEquals(Product.Status.SOLD_OUT, returnedProduct.getStatus());
+				verify(productRepository).save(product);
+		}
 }
