@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{layout :: head}"></head>
+<body>
+	<header th:insert="~{layout :: header}"></header>
+	<main class="content container mx-auto d-flex flex-column justify-content-center">
+        <div class="row mx-auto" style="max-width: 500px;">
+            <img th:src="@{'/product-images/' + ${product.topImage.id}}" class="img-fluid" alt="image placeholder"></img>
+            <h5 th:text="${product.name}">Product Name</h5>
+            <p th:text="${#numbers.formatInteger(product.price, 0, 'COMMA')} + '円'">Price</p>
+            <form th:action="@{orders}" method="post">
+                <input type="hidden" name="productId" th:value="${product.id}">
+                <button type="submit" class="btn btn-primary">購入する</button>
+            </form>
+        </div>
+	</main>
+	<div th:insert="~{layout :: dependencies}"></div>
+</body>
+</html>
+
+

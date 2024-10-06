@@ -41,6 +41,7 @@ public class SecurityConfig {
                             "/",
                             "/signin",
                             "/signup",
+                            "/products/**",
                             "/css/**",
                             "/js/**",
                             "/images/**",

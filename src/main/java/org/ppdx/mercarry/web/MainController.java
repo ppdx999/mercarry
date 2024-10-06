@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
@@ -65,5 +66,15 @@ public class MainController extends BaseController {
             model.addAttribute("errorMessage", "An unexpected error occurred. Please try again later.");
             return "signup";
         }
+    }
+
+    @GetMapping("/products/{productId}")
+    public String showProduct(@PathVariable Long productId, Model model) {
+        var product = productService.getProductById(productId);
+        if (product.isEmpty()) {
+            return "products/not_found";
+        }
+        model.addAttribute("product", product.get());
+        return "products/show";
     }
 }
