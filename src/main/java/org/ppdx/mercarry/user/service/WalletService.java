@@ -24,7 +24,7 @@ public class WalletService {
         return walletRepository.save(wallet);
     }
 
-    public void chargeWallet(Wallet wallet, BigDecimal amount) {
+    public void topUpWallet(Wallet wallet, BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new BusinessException("Amount must be positive.");
         }

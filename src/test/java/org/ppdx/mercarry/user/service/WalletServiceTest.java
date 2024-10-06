@@ -38,7 +38,7 @@ public class WalletServiceTest {
         Wallet wallet = new Wallet();
         wallet.setBalance(BigDecimal.ZERO);
 
-        walletService.chargeWallet(wallet, new BigDecimal("100"));
+        walletService.topUpWallet(wallet, new BigDecimal("100"));
 
         ArgumentCaptor<Wallet> walletCaptor = ArgumentCaptor.forClass(Wallet.class);
         verify(walletRepository).save(walletCaptor.capture());
@@ -53,7 +53,7 @@ public class WalletServiceTest {
         Wallet wallet = new Wallet();
         wallet.setBalance(BigDecimal.ZERO);
 
-        assertThatThrownBy(() -> walletService.chargeWallet(wallet, new BigDecimal(amount)))
+        assertThatThrownBy(() -> walletService.topUpWallet(wallet, new BigDecimal(amount)))
                 .isInstanceOf(BusinessException.class)
                 .hasMessage("Amount must be positive.");
 
