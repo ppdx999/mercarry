@@ -31,4 +31,13 @@ public class Product {
 	@OneToOne
 	@JoinColumn(name = "top_image_id")
 	private ProductImage topImage;
+
+	@Enumerated(EnumType.STRING)
+	private Status status;
+
+	public enum Status {
+			DISABLED,
+			ACTIVE,
+			SOLD_OUT
+	}
 }
