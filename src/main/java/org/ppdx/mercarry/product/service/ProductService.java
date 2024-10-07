@@ -1,5 +1,6 @@
 package org.ppdx.mercarry.product.service;
 
+import org.ppdx.mercarry.core.BusinessException;
 import org.ppdx.mercarry.product.domain.Product;
 import org.ppdx.mercarry.product.domain.ProductImage;
 import org.ppdx.mercarry.product.repository.ProductRepository;
@@ -46,7 +47,7 @@ public class ProductService {
 		return product;
 	}
 
-	public Product markAsSoldOut(Product product) {
+	public Product markAsSoldOut(Product product) throws BusinessException {
 		product.setStatus(Product.Status.SOLD_OUT);
 		productRepository.save(product);
 		return product;

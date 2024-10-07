@@ -83,7 +83,7 @@ public class Product {
 			public abstract Status transitionTo(Status newStatus);
 	}
 	
-	public void setStatus(Status status) {
+	public void setStatus(Status status) throws BusinessException {
 		this.status = this.status.transitionTo(status);
 	}
 
