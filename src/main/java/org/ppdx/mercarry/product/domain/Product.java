@@ -46,8 +46,8 @@ public class Product {
 			DISABLED {
 				@Override
 				public Status transitionTo(Status newStatus) {
-					if (newStatus == Status.ACTIVE) {
-						return Status.ACTIVE;
+					if (newStatus == Status.ON_SALE) {
+						return Status.ON_SALE;
 					} else if (newStatus == Status.DISABLED) {
 						return Status.DISABLED;
 					} else {
@@ -55,13 +55,13 @@ public class Product {
 					}
 				}
 			},
-			ACTIVE {
+			ON_SALE {
 				@Override
 				public Status transitionTo(Status newStatus) {
 					if (newStatus == Status.SOLD_OUT) {
 						return Status.SOLD_OUT;
-					} else if (newStatus == Status.ACTIVE) {
-						return Status.ACTIVE;
+					} else if (newStatus == Status.ON_SALE) {
+						return Status.ON_SALE;
 					} else if (newStatus == Status.DISABLED) {
 						return Status.DISABLED;
 					} else {

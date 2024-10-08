@@ -100,7 +100,7 @@ public class ProductServiceTest {
 		@Test
 		void testMarkAsSoldOut() {
 				// Arrange
-				Product product = new Product(Product.Status.ACTIVE);
+				Product product = new Product(Product.Status.ON_SALE);
 
 				// Act
 				Product returnedProduct = productService.markAsSoldOut(product);

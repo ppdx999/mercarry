@@ -15,11 +15,11 @@ import java.util.stream.Stream;
 public class ProductTest {
     static Stream<Arguments> provideValidStateTransitions() {
         return Stream.of(
-            Arguments.of(Product.Status.DISABLED, Product.Status.ACTIVE),
-            Arguments.of(Product.Status.ACTIVE, Product.Status.DISABLED),
-            Arguments.of(Product.Status.ACTIVE, Product.Status.SOLD_OUT),
+            Arguments.of(Product.Status.DISABLED, Product.Status.ON_SALE),
+            Arguments.of(Product.Status.ON_SALE, Product.Status.DISABLED),
+            Arguments.of(Product.Status.ON_SALE, Product.Status.SOLD_OUT),
 						Arguments.of(Product.Status.DISABLED, Product.Status.DISABLED),
-						Arguments.of(Product.Status.ACTIVE, Product.Status.ACTIVE),
+						Arguments.of(Product.Status.ON_SALE, Product.Status.ON_SALE),
 						Arguments.of(Product.Status.SOLD_OUT, Product.Status.SOLD_OUT)
         );
     }
@@ -35,7 +35,7 @@ public class ProductTest {
     static Stream<Arguments> provideInvalidStateTransitions() {
         return Stream.of(
             Arguments.of(Product.Status.DISABLED, Product.Status.SOLD_OUT),
-            Arguments.of(Product.Status.SOLD_OUT, Product.Status.ACTIVE),
+            Arguments.of(Product.Status.SOLD_OUT, Product.Status.ON_SALE),
             Arguments.of(Product.Status.SOLD_OUT, Product.Status.DISABLED)
         );
     }
