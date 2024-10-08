@@ -24,7 +24,7 @@ public class OrderController {
 	@Autowired
 	private Logger logger;
 
-	@PostMapping("/purchase")
+	@PostMapping("")
 	public String purchaseProduct(Long productId, @AuthenticationPrincipal User user, Model model) {
 		var optionalProduct = productService.getProductById(productId);
 
