@@ -32,8 +32,8 @@ public class Product {
 	private BigDecimal price;
 
 	@ManyToOne
-	@JoinColumn(name = "supplier_id")
-	private User supplier;
+	@JoinColumn(name = "seller_id")
+	private User seller;
 
 	@OneToOne
 	@JoinColumn(name = "top_image_id")

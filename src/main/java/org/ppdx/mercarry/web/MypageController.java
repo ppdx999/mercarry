@@ -35,7 +35,7 @@ public class MypageController extends BaseController {
 
 	@GetMapping("/mypage/products")
 	public String listProducts(Model model, @AuthenticationPrincipal User user) {
-		model.addAttribute("products", productService.getProductsBySupplier(user));
+		model.addAttribute("products", productService.getProductsBySeller(user));
 		return "mypage/products/index";
 	}
 

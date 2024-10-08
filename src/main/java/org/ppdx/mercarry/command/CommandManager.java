@@ -11,9 +11,6 @@ public class CommandManager {
 
         Command cmd = null;
         switch (cmdName) {
-					case "populatedb":
-                cmd = context.getBean(PopulatedbCommand.class);
-                break;
             default:
                 cmd = context.getBean(UnknownCommand.class);
 								args = new String[] {cmdName};

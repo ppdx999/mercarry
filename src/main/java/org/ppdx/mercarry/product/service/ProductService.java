@@ -25,19 +25,19 @@ public class ProductService {
 		return productRepository.findAll();
 	}
 
-	public List<Product> getProductsBySupplier(User supplier) {
-		return productRepository.findBySupplier(supplier);
+	public List<Product> getProductsBySeller(User seller) {
+		return productRepository.findBySeller(seller);
 	}
 
 	public Optional<Product> getProductById(Long id) {
 		return productRepository.findById(id);
 	}
 
-	public Product createProduct(String name, BigDecimal price, User supplier, MultipartFile imgFile) throws Exception {
+	public Product createProduct(String name, BigDecimal price, User seller, MultipartFile imgFile) throws Exception {
 		Product product = new Product();
 		product.setName(name);
 		product.setPrice(price);
-		product.setSupplier(supplier);
+		product.setSeller(seller);
 		productRepository.save(product);
 
 		ProductImage productImage = productImageService.createProductImage(product, imgFile);

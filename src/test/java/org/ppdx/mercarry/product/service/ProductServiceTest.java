@@ -39,22 +39,22 @@ public class ProductServiceTest {
 	}
 
 	@Test
-	void testGetProductsBySupplier() {
+	void testGetProductsBySeller() {
 		// Arrange
-		User supplier = new User();
-		supplier.setId(1L);
+		User seller = new User();
+		seller.setId(1L);
 
 		Product product1 = new Product();
 		product1.setId(1L);
-		product1.setSupplier(supplier);
+		product1.setSeller(seller);
 
-		when(productRepository.findBySupplier(supplier)).thenReturn(List.of(product1));
+		when(productRepository.findBySeller(seller)).thenReturn(List.of(product1));
 
 		// Act
-		List<Product> products = productService.getProductsBySupplier(supplier);
+		List<Product> products = productService.getProductsBySeller(seller);
 
 		// Assert
-		verify(productRepository).findBySupplier(supplier);
+		verify(productRepository).findBySeller(seller);
 		assertThat(products.size()).isEqualTo(1);
 		assertThat(products).containsExactly(product1);
 	}
@@ -65,8 +65,8 @@ public class ProductServiceTest {
         MockitoAnnotations.openMocks(this);
         String name = "Test Product";
         BigDecimal price = new BigDecimal("100.00");
-        User supplier = new User();
-        supplier.setId(1L);
+        User seller = new User();
+        seller.setId(1L);
         MockMultipartFile imgFile = new MockMultipartFile("image", "test.jpg", "image/jpeg", "image content".getBytes());
         ProductImage productImage = new ProductImage();
         productImage.setId(1L);
@@ -75,13 +75,13 @@ public class ProductServiceTest {
         when(productImageService.createProductImage(any(Product.class), any(MockMultipartFile.class))).thenReturn(productImage);
 
         // Act
-        Product returnedProduct = productService.createProduct(name, price, supplier, imgFile);
+        Product returnedProduct = productService.createProduct(name, price, seller, imgFile);
 
         // Assert returned product
         assertNotNull(returnedProduct);
         assertEquals(name, returnedProduct.getName());
         assertEquals(price, returnedProduct.getPrice());
-        assertEquals(supplier, returnedProduct.getSupplier());
+        assertEquals(seller, returnedProduct.getSeller());
         assertNotNull(returnedProduct.getTopImage());
 
         // Assert saved product
@@ -92,7 +92,7 @@ public class ProductServiceTest {
         assertNotNull(finalSavedProduct);
         assertEquals(name, finalSavedProduct.getName());
         assertEquals(price, finalSavedProduct.getPrice());
-        assertEquals(supplier, finalSavedProduct.getSupplier());
+        assertEquals(seller, finalSavedProduct.getSeller());
         assertNotNull(finalSavedProduct.getTopImage());
         assertEquals(productImage, finalSavedProduct.getTopImage());
     }

@@ -41,7 +41,7 @@ public class OrderService {
 		Order order = new Order();
 		order.setProduct(product);
 		order.setBuyer(buyer);
-		order.setSeller(product.getSupplier());
+		order.setSeller(product.getSeller());
 		order.setPrice(product.getPrice());
 		orderRepository.save(order);
 		return order;

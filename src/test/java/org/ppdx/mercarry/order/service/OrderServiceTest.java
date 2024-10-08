@@ -48,7 +48,7 @@ public class OrderServiceTest {
 		User buyer = new User();
 		User seller = new User();
 		product.setId(1L);
-		product.setSupplier(seller);
+		product.setSeller(seller);
 		product.setPrice(BigDecimal.valueOf(100));
 		buyer.setId(1L);
 		seller.setId(2L);
@@ -68,7 +68,7 @@ public class OrderServiceTest {
 		User buyer = new User();
 		User seller = new User();
 		product.setId(1L);
-		product.setSupplier(seller);
+		product.setSeller(seller);
 		product.setPrice(BigDecimal.valueOf(100));
 		buyer.setId(1L);
 		seller.setId(2L);
