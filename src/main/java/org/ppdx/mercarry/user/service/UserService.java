@@ -57,4 +57,8 @@ public class UserService {
     public void topUpWallet(User user, BigDecimal amount) {
         walletService.topUp(user.getWallet(), amount);
     }
+
+		public boolean canAfford(User user, BigDecimal amount) {
+			return user.getWallet().getBalance().compareTo(amount) >= 0;
+		}
 }

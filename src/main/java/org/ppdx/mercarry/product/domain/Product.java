@@ -87,6 +87,10 @@ public class Product {
 		this.status = this.status.transitionTo(status);
 	}
 
+	public boolean isOnSale() {
+		return status == Status.ON_SALE;
+	}
+
 	public boolean isSoldOut() {
 		return status == Status.SOLD_OUT;
 	}
